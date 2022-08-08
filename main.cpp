@@ -1,33 +1,46 @@
 #include <iostream>
 #include <array>
 
-void main()
+void printArray(int* unsortedArray, int length)
 {
-	int unsortedArr[] = { 7, 3, 4, 2, 10, 67, 2, 1 };
-	
+	for (int i = 0; i < length; i++)
+	{
+		std::cout << unsortedArray[i] << " ";
+	}
+}
+
+int* bubbleSort(int* unsortedArray, int length)
+{
 	bool sorted;
 
 	do
 	{
 		sorted = false;
 
-		for (int i = 0; i < std::size(unsortedArr) - 1; i++)
+		for (int i = 0; i < length - 1; i++)
 		{
 
-			if (unsortedArr[i] > unsortedArr[i + 1])
+			if (unsortedArray[i] > unsortedArray[i + 1])
 			{
 				sorted = true;
-				int temp = unsortedArr[i];
-				unsortedArr[i] = unsortedArr[i + 1];
-				unsortedArr[i + 1] = temp;
+				int temp = unsortedArray[i];
+				unsortedArray[i] = unsortedArray[i + 1];
+				unsortedArray[i + 1] = temp;
 			}
 
 		}
 	} while (sorted);
 
-	for (int i = 0; i < std::size(unsortedArr); i++)
-	{
-		std::cout << unsortedArr[i] << " ";
-	}
+	return unsortedArray;
+}
+
+void main()
+{
+	static int unsortedArr[] = { 7, 3, 4, 2, 10, 67, 2, 1 };
+	
+	int * sortedArray = bubbleSort(unsortedArr, std::size(unsortedArr));
+
+	printArray(sortedArray, std::size(unsortedArr));
+	
 }
 
