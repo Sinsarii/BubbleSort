@@ -1,6 +1,8 @@
 #include <iostream>
 #include <array>
 
+using namespace std;
+
 void printArray(int* unsortedArray, int length)
 {
 	for (int i = 0; i < length; i++)
@@ -34,13 +36,16 @@ int* bubbleSort(int* unsortedArray, int length)
 	return unsortedArray;
 }
 
-void main()
+int main()
 {
 	static int unsortedArr[] = { 7, 3, 4, 2, 10, 67, 2, 1 };
-	
-	int * sortedArray = bubbleSort(unsortedArr, std::size(unsortedArr));
 
-	printArray(sortedArray, std::size(unsortedArr));
+	int arraySize = sizeof(unsortedArr)/sizeof(unsortedArr[0]);
 	
+	int * sortedArray = bubbleSort(unsortedArr, arraySize);
+
+	printArray(sortedArray, arraySize);
+	
+	return 0;
 }
 
